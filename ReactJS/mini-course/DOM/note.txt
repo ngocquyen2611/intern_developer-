@@ -1,0 +1,17 @@
+====ES6:
++ destructuring, rest, spread, modules
+====React, ReactDOM: 
++ createElement('tagName'): tao 1 element , sau do innerHTML(), sau do phai gan vao 1 element khac 
+append(), appendChild()
+Ex: const title1 = document.createElement('h1');
+	title1.innerText = 'hellolololo';
+	document.body.appendChild(title1);
++ React.createElement(type, props, children, ...childrenn), khac biet so voi DOM binh thuong o cho no co the tao ra cac DOM ao
+khong nhieu thuoc tinh nhu DOM binh thuong
+    * - type: Tên thẻ HTML (string) ví dụ: 'h1', 'div', 'ul', 'li'...
+    * - props: Các thuộc tính của thẻ (object) ví dụ: { className: 'heading', id: 'main' }
+    * - children: Nội dung bên trong thẻ (có thể là text, hoặc các React element con khác).
++ thư viện react và react-dom tách riêng để render lên từng nền tảng khác nhau mà chỉ cần học 1 thư viện để thiết kế là react, dom
+lên website, mobile tren react-native
+====JSX
+

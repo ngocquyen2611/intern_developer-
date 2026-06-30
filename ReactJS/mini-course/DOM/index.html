@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học React.createElement() - F8</title>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <!-- <script>
+        /**
+         * LÝ THUYẾT TRỌNG TÂM TRONG VIDEO:
+         * * 1. React.createElement() trả về một "React element" (Bản chất là một Object mô tả giao diện).
+         * 2. So sánh với document.createElement() thì phương thức gốc của JS trả về một "DOM element" thật.
+         * - DOM thật chứa hàng trăm thuộc tính nặng nề.
+         * - React element là DOM ảo (Virtual DOM) cực kỳ nhẹ, giúp tăng tốc độ xử lý giao diện.
+         * * CÚ PHÁP: React.createElement(type, props, children, ...childrenn)
+         * - type: Tên thẻ HTML (string) ví dụ: 'h1', 'div', 'ul', 'li'...
+         * - props: Các thuộc tính của thẻ (object) ví dụ: { className: 'heading', id: 'main' }
+         * - children: Nội dung bên trong thẻ (có thể là text, hoặc các React element con khác).
+         */
+
+        // ==========================================
+    //     // 5. Tạo thẻ: <h1 title="Hello" class="heading">Hello guys!</h1>
+    //     // ==========================================
+    //     const newH = React.createElement(
+    //         'h1',
+    //         { title: 'Hello', className: 'heading' },
+    //         'Hello guys!'
+    // )
+
+        // // ==========================================
+        // // RENDER (HIỂN THỊ) LÊN TRÌNH DUYỆT
+        // const newEle = React.createElement(
+        //     'h1',
+        //     { id: 'new1'},
+        //     'Hello cin chao'
+        // );
+        // //chon goc
+        // const container = document.querySelector('#root');
+        // // khoi tao goc cho react
+        // const root = ReactDOM.createRoot(container);
+        // // goi ham render
+        // root.render(newEle);
+
+        // // RENDER CACH 2
+
+        // const ul = React.createElement(
+        //     'ul',
+        //     null,
+        //     React.createElement('li', null, 'JS'),
+        //     React.createElement('li', null, 'PHP')
+        // );
+        // ReactDOM.render(ul, document.querySelector('root'));
+    </script> -->
+        <!-- // =============================================
+        // JSX -->
+        <div id="root"></div>
+
+
+    <script>
+        const newEle = React.createElement(
+            'h1',
+            { id: 'new1' },
+            'Hello xin chào (Được tạo bằng createElement)'
+        );
+
+        // Lúc này root đã nằm ở trên nên chắc chắn tìm thấy, không lo bị null nữa!
+        const container = document.querySelector('#root'); 
+        const root = ReactDOM.createRoot(container);
+        
+        // Hãy comment dòng render này lại nếu muốn xem khối JSX chạy ở dưới nhé
+        // root.render(newEle); 
+    </script>
+
+    <script type="text/babel">
+        const reactCourse = 'React JS tại F8';
+
+        const ulElement = (
+            <ul>
+                <li>Bài học: {reactCourse}</li>
+                <li>Xin Chào - JSX đã chạy mượt mà!</li>
+            </ul>
+        );
+
+        // Render ra theo chuẩn React 18 bằng cú pháp JSX
+        const containerJsx = document.querySelector('#root');
+        const rootJsx = ReactDOM.createRoot(containerJsx);
+        rootJsx.render(ulElement);
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+    ]
+}
+//cau hinh cho thu vien babel de chuyen doi code es6 va react sang code es5 de trinh duyet hieu hieu

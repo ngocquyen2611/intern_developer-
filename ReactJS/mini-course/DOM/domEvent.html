@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Components | Làm việc với JSX - Phần 2 - F8</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // === 1. ĐOẠN DỮ LIỆU MẪU (const courses) ===
+        // Trong ảnh của bạn đoạn này đang được thu gọn lại ở dòng 43, đây là nội dung đầy đủ của nó:
+        const courses = [
+            {
+                id: 1,
+                title: "HTML, CSS Từ Zero Đến Hero",
+                thumbnail_cdn: "https://files.fullstack.edu.vn/f8-prod/courses/2.png",
+                description: "Trong khóa học này bạn sẽ được học từ cơ bản đến nâng cao về HTML và CSS.",
+                studentsCount: 154200
+            },
+            {
+                id: 2,
+                title: "Responsive Với Grid System",
+                thumbnail_cdn: "https://files.fullstack.edu.vn/f8-prod/courses/3.png",
+                description: "Hiểu sâu về layout, xây dựng giao diện tương thích với mọi thiết bị di động.",
+                studentsCount: 89300
+            },
+            {
+                id: 3,
+                title: "Lập Trình JavaScript Cơ Bản",
+                thumbnail_cdn: "https://files.fullstack.edu.vn/f8-prod/courses/1.png",
+                description: "Học về biến, hàm, mảng, đối tượng và tư duy logic căn bản trong lập trình.",
+                studentsCount: 120500
+            }
+        ];
+
+        // === 2. UI COMPONENT (CourseItem) ===
+        // Sử dụng cú pháp Destructuring { course } trực tiếp ở tham số để lấy dữ liệu
+        function CourseItem({data, onClick}) {} {
+            return (
+                <div>
+                    <h2 
+                        onClick={() => onClick(data.title)}
+                    >
+                        {data.title}
+                    </h2>
+                    <img width="100%" src={data.thumbnail_cdn} alt={data.title} style={{ maxWidth: '300px' }} />
+                    <p>{data.description}</p>
+                    <p>Số học viên: {data.studentsCount.toLocaleString()}</p>
+                </div>
+            )
+        }
+
+        // === 3. CONTAINER COMPONENT (App) ===
+        // Sử dụng phương thức .map() để lặp qua mảng dữ liệu và tạo ra danh sách component
+        function App() {
+            const handleClick = (title) => {
+                console.log(`Bạn đã click vào khóa học: ${title}`);
+            };
+            return (
+                <div id="wrapper">
+                    {courses.map(course => (
+                        <CourseItem 
+                            key={course.id}
+                            data={course} 
+                            onClick={handleClick} />
+                    ))}
+                </div>
+            )
+        }
+
+        // === 4. RENDER TO DOM ===
+        // Khởi tạo và kích hoạt ứng dụng lên màn hình trình duyệt (Cú pháp chuẩn React 18)
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

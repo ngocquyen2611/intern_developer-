@@ -86,6 +86,7 @@
             <ul>
                 <li>Bài học: {reactCourse}</li>
                 <li>Xin Chào - JSX đã chạy mượt mà!</li>
+                <button onClick={() => alert('Hello guys!')}>Click me</button>
             </ul>
         );
 
@@ -94,5 +95,6 @@
         const rootJsx = ReactDOM.createRoot(containerJsx);
         rootJsx.render(ulElement);
     </script>
+
 </body>
 </html>

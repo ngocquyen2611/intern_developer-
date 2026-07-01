@@ -13,15 +13,45 @@
 </head>
 
 <body>
+    <div id="root"></div>
+
     <script type="text/babel">
-        function PostItem(props) {
+        function PostItem({
+            image,
+            title,
+            description,
+            callback = () => {}
+        }) {
+            console.log({ image, title, description });
+            callback();
             return (
                 <div className="post-item">
-                    <img src={props.image}
-                        title={props.title}
+                    <img src={image}
+                        title={title}
                     />
-                    
-                    )
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                </div>
+            )
         }
+        <div>
+            <PostItem
+                image="https://via.placeholder.com/150"
+                title="Post 1"
+                description="Description 1"
+            />
+            <PostItem
+                image="https://via.placeholder.com/150"
+                title="Post 2"
+                description="Description 2"
+                callback={() => console.log("Post 2 clicked")}
+            />
+            <PostItem
+                image="https://via.placeholder.com/150"
+                title="Post 3"
+                description="Description 3"
+            />
+        </div>
+
     </script>
 </body>

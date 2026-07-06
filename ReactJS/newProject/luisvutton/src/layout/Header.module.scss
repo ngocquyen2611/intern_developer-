@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* =========================================
+   1. BỐ CỤC CHÍNH (HEADER)
+   ========================================= */
+.lvHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+  z-index: 1000;
+  
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  background-color: transparent;
+  color: #ffffff;
+  border-bottom: 1px solid transparent;
+
+  /* SCSS Nesting: Dấu & đại diện cho .lvHeader */
+  &.isWhite {
+    background-color: #ffffff;
+    color: #000000;
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
+/* =========================================
+   2. CÁC CỤM TRÁI - GIỮA - PHẢI
+   ========================================= */
+.leftGroup, .rightNav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: 8px;
+  margin: 0;
+  font-size: 26px;
+  cursor: pointer;
+  text-align: center;
+
+  color: inherit; /* Ép logo luôn lấy màu chữ giống với Header (trắng hoặc đen) */
+  transition: color 0.3s ease-in-out; /* Giúp hiệu ứng đổi màu mượt mà hơn */
+}
+
+/* =========================================
+   3. TYPOGRAPHY & TIỆN ÍCH CHUNG
+   ========================================= */
+.textSans {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.smartLink, .actionBtn {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px; 
+  border-radius: 4px;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.iconMenu { font-size: 18px; }
+.iconNormal { font-size: 16px; }
+.iconLarge { font-size: 20px; }
+
+/* =========================================
+   4. KHUNG TÌM KIẾM ĐỘNG
+   ========================================= */
+.searchDrawer {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+
+  &.isOpen {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.searchWrapper {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 14px 20px 14px 45px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* =========================================
+   5. LỚP PHỦ MỜ (OVERLAY CHO MENU)
+   ========================================= */
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+
+/* =========================================
+   5b. LỚP PHỦ MỜ (OVERLAY CHO TÌM KIẾM)
+   ========================================= */
+.searchOverlay {
+  position: fixed;
+  top: 75px; /* chừa lại phần header phía trên */
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 90; /* thấp hơn searchDrawer (mặc định z-index cao hơn theo thứ tự DOM) nhưng vẫn che nội dung phía dưới */
+  cursor: pointer;
+}
+
+/* =========================================
+   6. SIDEBAR MENU
+   ========================================= */
+.sidebarMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px; /* Chiều rộng giống bản gốc hơn */
+  max-width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 100;
+  padding: 40px; /* Tăng padding để có khoảng thở */
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: left; /* Ép buộc căn trái cho toàn bộ nội dung */
+}
+
+/* =========================================
+   7. NÚT ĐÓNG & DANH SÁCH MENU
+   ========================================= */
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif; /* Dùng font không chân */
+  font-weight: 400;
+  cursor: pointer;
+  margin-bottom: 40px; /* Cách xa danh sách bên dưới ra một chút */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #000000;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+/* DANH SÁCH MENU */
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Khoảng cách vừa phải giữa các dòng */
+
+  li {
+    a {
+      text-decoration: none;
+      
+      /* ÉP CHỮ CHUYỂN SANG MÀU ĐEN TUYỀN */
+      color: #000000 !important; 
+      opacity: 1; /* Mặc định hiển thị rõ nét, không bị xám mờ */
+      
+      /* Định dạng font chữ theo F12 bạn quét được */
+      font-size: 1.05rem; 
+      font-weight: 400;
+      letter-spacing: 0.025rem;
+      line-height: 1.3;
+      
+      transition: opacity 0.2s ease-in-out;
+      
+      /* HIỆU ỨNG KHI RÊ CHUỘT VÀO: Chỉ lúc này mới mờ nhẹ đi một chút */
+      &:hover {
+        opacity: 0.6; 
+      }
+    }
+  }
+
+  /* Mục tạo khoảng hở chia nhóm trong menu của LV */
+  .divider {
+    height: 16px; 
+  }
+}
+
+/* SỬA LUÔN NÚT ĐÓNG CHO ĐỒNG BỘ MÀU ĐEN */
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-bottom: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  /* Màu đen cho nút đóng */
+  color: #000000; 
+  font-weight: 400;
+}

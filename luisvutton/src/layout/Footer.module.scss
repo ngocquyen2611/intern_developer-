@@ -1,0 +1,108 @@
+/* =========================================
+   TỔNG THỂ FOOTER
+   ========================================= */
+.lvFooter {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  font-family: 'Montserrat', sans-serif;
+  color: #19110b; /* Màu đen xám đặc trưng của text LV */
+  padding: 40px 60px;
+
+  /* RESPONSIVE: MÁY TÍNH BẢNG */
+  @media (max-width: 1024px) {
+    padding: 40px;
+  }
+
+  /* RESPONSIVE: ĐIỆN THOẠI */
+  @media (max-width: 640px) {
+    padding: 30px 20px;
+  }
+}
+
+/* =========================================
+   THANH ĐIỀU HƯỚNG TRÊN CÙNG
+   ========================================= */
+.footerTop {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 24px;
+  margin-bottom: 40px;
+  font-size: 14px;
+
+  /* SCSS Nesting: Tự động áp dụng cho thẻ a nằm trong .footerTop */
+  a {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #19110b;
+    padding-bottom: 2px;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 640px) {
+    margin-bottom: 30px;
+  }
+}
+
+/* =========================================
+   LƯỚI 4 CỘT CHÍNH
+   ========================================= */
+.footerMain {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* =========================================
+   ĐỊNH DẠNG TỪNG CỘT
+   ========================================= */
+.footerCol {
+  h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li, p {
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+/* =========================================
+   LINK GẠCH CHÂN TRONG VĂN BẢN
+   ========================================= */
+.inlineLink {
+  text-decoration: underline;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.6;
+  }
+}
